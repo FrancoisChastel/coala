@@ -74,6 +74,8 @@ script:
   - python setup.py bdist_wheel
   - pip install ./dist/coala-*.whl
   - pip install coala-bears[alldeps] --pre -U
+  - pip install flake8
+  - flake8 .
   # https://github.com/coala/coala-bears/issues/1037
   - >
     if [[ "$TRAVIS_PULL_REQUEST" != "false" ]]; then
