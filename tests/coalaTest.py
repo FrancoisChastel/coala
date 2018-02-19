@@ -10,14 +10,13 @@ from coalib import assert_supported_version, coala
 from pyprint.ConsolePrinter import ConsolePrinter
 from coala_utils.ContextManagers import prepare_file
 from coalib.output.Logging import configure_logging
-from coala_utils.ContextManagers import (
-    make_temp, retrieve_stdout, simulate_console_inputs)
+from coala_utils.ContextManagers import (retrieve_stdout, simulate_console_inputs)
 
 from tests.TestUtilities import (
     bear_test_module,
     execute_coala,
     TEST_BEARS_COUNT,
-)
+ )
 
 
 class coalaTest(unittest.TestCase):
@@ -50,8 +49,8 @@ class coalaTest(unittest.TestCase):
     def test_coala2(self):
         with bear_test_module(), \
                 prepare_file(['#fixme'], None) as (lines, filename):
-            with simulate_console_inputs('a', 'n') as generator, \
-                    retrieve_stdout() as sio:
+            with simulate_console_inputs('a', 'n'), \
+                    retrieve_stdout():
                 retval, stdout, stderr = execute_coala(
                                  coala.main,
                                  'coala', '-c', os.devnull,
@@ -72,8 +71,8 @@ class coalaTest(unittest.TestCase):
     def test_coala3(self):
         with bear_test_module(), \
                 prepare_file(['#fixme'], None) as (lines, filename):
-            with simulate_console_inputs('1', 'n') as generator, \
-                    retrieve_stdout() as sio:
+            with simulate_console_inputs('1', 'n'), \
+                    retrieve_stdout():
                 retval, stdout, stderr = execute_coala(
                                  coala.main,
                                  'coala', '-c', os.devnull,
@@ -94,8 +93,8 @@ class coalaTest(unittest.TestCase):
     def test_coala4(self):
         with bear_test_module(), \
                 prepare_file(['#fixme'], None) as (lines, filename):
-            with simulate_console_inputs('x', 'n') as generator, \
-                    retrieve_stdout() as sio:
+            with simulate_console_inputs('x', 'n'), \
+                    retrieve_stdout():
                 retval, stdout, stderr = execute_coala(
                                  coala.main,
                                  'coala', '-c', os.devnull,
