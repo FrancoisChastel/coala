@@ -2,7 +2,10 @@ import unittest
 import logging
 
 from coalib.parsing.LineParser import LineParser
+from unittest import mock
 
+true_mock = mock.Mock(return_value = True)
+false_mock = mock.Mock(return_value = False)
 
 class LineParserTest(unittest.TestCase):
 
@@ -10,20 +13,27 @@ class LineParserTest(unittest.TestCase):
         self.uut = LineParser(comment_separators=('#', ';'))
 
     def test_empty_line(self):
-        self.check_data_set('')
-        self.check_data_set('\n \n \n')
+        with mock.patch('re.match', false_mock):
+            import re
+            self.check_data_set('')
+            self.check_data_set('\n \n \n')
 
     def test_comment_parsing(self):
         logger = logging.getLogger()
-        self.check_data_set('# comment only$§\n',
+
+        with mock.patch('re.match', false_mock):
+            import re
+            self.check_data_set('# comment only$§\n',
                             output_comment='# comment only$§')
-        self.check_data_set('   ; comment only  \n',
+            self.check_data_set('   ; comment only  \n',
                             output_comment='; comment only')
-        self.check_data_set('   ; \\comment only  \n',
+            self.check_data_set('   ; \\comment only  \n',
                             output_comment='; comment only')
+            self.assertEqual(re.match.called, True)
+
         self.check_data_set('#', output_comment='#')
         with self.assertLogs(logger, 'WARNING') as warn:
-            self.check_data_set('##\n', output_comment='##')
+                self.check_data_set('##\n', output_comment='##')
         self.assertEqual(len(warn.output), 1)
         self.assertEqual(warn.output[0], 'WARNING:root:This comment does ' +
                                          'not have whitespace before or ' +
@@ -31,9 +41,11 @@ class LineParserTest(unittest.TestCase):
                                          '. If you didn\'t mean to make ' +
                                          'a comment, use a backslash for ' +
                                          'escaping.')
-        with self.assertLogs(logger, 'WARNING') as warn:
-            self.check_data_set('#A\n', output_comment='#A')
-        self.assertEqual(warn.output[0], 'WARNING:root:This comment does ' +
+
+        with mock.patch('re.match', true_mock):
+            with self.assertLogs(logger, 'WARNING') as warn:
+                self.check_data_set('#A\n', output_comment='#A')
+            self.assertEqual(warn.output[0], 'WARNING:root:This comment does ' +
                                          'not have whitespace before or ' +
                                          'after # in: ' + repr('#A') +
                                          '. If you didn\'t mean to make ' +
