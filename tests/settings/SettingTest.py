@@ -132,8 +132,8 @@ class SettingTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.uut = Setting('key', '1.987, a, 3')
             float_list(self.uut)
-        #with mock.patch('typed_list(float)', float_mock):
-        self.assertEqual(repr(float_list), 'typed_list(float)')
+        with mock.patch('coalib.settings.Setting.typed_list', float_mock):
+            self.assertEqual(repr(float_list), 'typed_list(float)')
 
     def test_bool_list(self):
         self.uut = Setting('key', 'true, nope, yeah')
