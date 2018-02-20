@@ -18,6 +18,7 @@ from coalib.parsing.Globbing import glob_escape
 int_mock = mock.Mock(return_value = [1, 97, 3])
 str_mock = mock.Mock(return_value = ['a', 'b', 'c'])
 float_mock = mock.Mock(return_value = [1.987, 97.0, 3.0])
+bool_mock = mock.Mock(return_value = [True, False, True, True])
 
 class SettingTest(unittest.TestCase):
 
@@ -143,7 +144,8 @@ class SettingTest(unittest.TestCase):
             self.uut = Setting('key', 'true, false, 78, 89.0')
             bool_list(self.uut)
 
-        self.assertEqual(repr(bool_list), 'typed_list(bool)')
+        with mock.patch('coalib.settings.Setting.typed_list', bool_mock):
+            self.assertEqual(repr(bool_list), 'typed_list(bool)')
 
     def test_typed_dict(self):
         self.uut = Setting('key', '1, 2: t, 3')
