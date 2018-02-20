@@ -5,7 +5,7 @@ import unittest
 from coalib import coala, coala_ci
 from coala_utils.ContextManagers import prepare_file
 from tests.TestUtilities import bear_test_module, execute_coala
-
+from unittest import mock
 
 class coalaCITest(unittest.TestCase):
 
@@ -16,8 +16,10 @@ class coalaCITest(unittest.TestCase):
         sys.argv = self.old_argv
 
     def test_log(self, debug=False):
-        retval, stdout, stderr = execute_coala(
-            coala_ci.main, 'coala-ci', '--help', debug=debug)
+        testargs = ['coala-ci', '--help', '--non-interactive']
+        with mock.patch.object(sys, 'argv', testargs):
+            retval, stdout, stderr = execute_coala(
+                coala_ci.main, 'coala-ci', '--help', debug=debug)
         self.assertIn('usage: coala', stdout)
         self.assertIn('Use of `coala-ci` executable is deprecated', stderr)
         self.assertEqual(retval, 0,
