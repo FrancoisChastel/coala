@@ -39,6 +39,10 @@ Overall results with link to a copy of the logs (before/after refactoring).
 
 The refactoring itself is documented by the git log.
 
+File: settings/SettingTest.py
+Log before refactoring: https://github.com/FrancoisChastel/coala/blob/master/SettingTest.log
+Log after refactoring: 
+
 ## Effort spent
 
 For each team member, how much time was spent in
