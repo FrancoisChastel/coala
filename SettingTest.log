@@ -1,0 +1,178 @@
+[1m============================= test session starts ==============================[0m
+platform darwin -- Python 3.6.4, pytest-3.1.3, py-1.5.2, pluggy-0.4.0
+rootdir: /Users/Anu/coala, inifile: setup.cfg
+plugins: xdist-1.22.0, timeout-1.2.1, reqs-0.0.7, reorder-0.1.0, mock-1.7.0, instafail-0.3.0, forked-0.2, error-for-skips-1.0.0, env-0.6.2, cov-2.5.1
+timeout: 35.0s method: signal
+collected 900 items
+
+tests/settings/SettingTest.py ..................
+
+---------- coverage: platform darwin, python 3.6.4-final-0 -----------
+Name                                                                Stmts   Miss Branch BrPart  Cover   Missing
+---------------------------------------------------------------------------------------------------------------
+coalib/bearlib/abstractions/LinterClass.py                              2      0      0      0   100%
+coalib/bearlib/abstractions/__init__.py                                 0      0      0      0   100%
+coalib/bearlib/aspects/Formatting.py                                   98      0     28      0   100%
+coalib/bearlib/aspects/Metadata.py                                     79      0     24      0   100%
+coalib/bearlib/aspects/Redundancy.py                                   65      0     20      0   100%
+coalib/bearlib/aspects/Security.py                                      7      0      2      0   100%
+coalib/bearlib/aspects/Smell.py                                       110      0     32      0   100%
+coalib/bearlib/aspects/Spelling.py                                     20      0      6      0   100%
+coalib/bearlib/aspects/docs.py                                         10      0      2      0   100%
+coalib/bearlib/aspects/root.py                                          5      0      0      0   100%
+coalib/bearlib/languages/__init__.py                                   24      0      0      0   100%
+coalib/bearlib/languages/definitions/C.py                              11      0      2      0   100%
+coalib/bearlib/languages/definitions/CPP.py                            12      0      2      0   100%
+coalib/bearlib/languages/definitions/CSS.py                             8      0      2      0   100%
+coalib/bearlib/languages/definitions/CSharp.py                          8      0      2      0   100%
+coalib/bearlib/languages/definitions/Fortran.py                         3      0      2      0   100%
+coalib/bearlib/languages/definitions/Golang.py                         10      0      2      0   100%
+coalib/bearlib/languages/definitions/JSP.py                             3      0      2      0   100%
+coalib/bearlib/languages/definitions/Java.py                            9      0      2      0   100%
+coalib/bearlib/languages/definitions/JavaScript.py                     10      0      2      0   100%
+coalib/bearlib/languages/definitions/Matlab.py                          3      0      2      0   100%
+coalib/bearlib/languages/definitions/ObjectiveC.py                      3      0      2      0   100%
+coalib/bearlib/languages/definitions/PHP.py                             3      0      2      0   100%
+coalib/bearlib/languages/definitions/PLSQL.py                           3      0      2      0   100%
+coalib/bearlib/languages/definitions/Python.py                         11      0      2      0   100%
+coalib/bearlib/languages/definitions/Ruby.py                            3      0      2      0   100%
+coalib/bearlib/languages/definitions/Scala.py                           3      0      2      0   100%
+coalib/bearlib/languages/definitions/Shell.py                          11      0      2      0   100%
+coalib/bearlib/languages/definitions/Swift.py                           3      0      2      0   100%
+coalib/bearlib/languages/definitions/TypeScript.py                     11      0      2      0   100%
+coalib/bearlib/languages/definitions/Unknown.py                         3      0      2      0   100%
+coalib/bearlib/languages/definitions/Vala.py                            9      0      2      0   100%
+coalib/bearlib/languages/definitions/__init__.py                        0      0      0      0   100%
+coalib/bearlib/languages/definitions/html.py                           10      0      2      0   100%
+coalib/bearlib/languages/documentation/__init__.py                      0      0      0      0   100%
+coalib/bearlib/spacing/__init__.py                                      0      0      0      0   100%
+coalib/bears/BEAR_KIND.py                                               2      0      0      0   100%
+coalib/bears/__init__.py                                                0      0      0      0   100%
+coalib/bears/meta.py                                                   12      0      7      2    89%   16->exit, 32->exit
+coalib/collecting/__init__.py                                           0      0      0      0   100%
+coalib/core/__init__.py                                                 0      0      0      0   100%
+coalib/misc/Compatibility.py                                            3      0      0      0   100%
+coalib/misc/Enum.py                                                     6      0      2      0   100%
+coalib/misc/__init__.py                                                 0      0      0      0   100%
+coalib/output/__init__.py                                               0      0      0      0   100%
+coalib/output/printers/LOG_LEVEL.py                                     4      0      0      0   100%
+coalib/output/printers/__init__.py                                      0      0      0      0   100%
+coalib/parsing/__init__.py                                              0      0      0      0   100%
+coalib/parsing/filters/__init__.py                                      4      0      0      0   100%
+coalib/processes/CONTROL_ELEMENT.py                                     2      0      0      0   100%
+coalib/processes/__init__.py                                            0      0      0      0   100%
+coalib/processes/communication/__init__.py                              0      0      0      0   100%
+coalib/results/RESULT_SEVERITY.py                                       4      0      2      1    83%   4->exit
+coalib/results/__init__.py                                              0      0      0      0   100%
+coalib/results/result_actions/DoNothingAction.py                        5      0      2      1    86%   8->exit
+coalib/results/result_actions/__init__.py                               0      0      0      0   100%
+coalib/settings/__init__.py                                             0      0      0      0   100%
+coalib/testing/BearTestHelper.py                                        4      0      0      0   100%
+coalib/testing/__init__.py                                              0      0      0      0   100%
+coalib/parsing/InvalidFilterException.py                                4      1      0      0    75%   6
+coalib/parsing/filters/CanDetectFilter.py                               3      1      2      0    40%   15
+coalib/parsing/filters/CanFixFilter.py                                  3      1      2      0    40%   15
+coalib/parsing/filters/LanguageFilter.py                                3      1      2      0    40%   14
+coalib/settings/Setting.py                                             88      1     26      0    99%   282
+coalib/misc/Constants.py                                               25      2      2      1    89%   118-120, 115->118
+coalib/results/HiddenResult.py                                         11      2      2      0    85%   74-87
+coalib/__init__.py                                                     12      3      2      0    64%   25-27
+coalib/bears/LocalBear.py                                              10      3      0      0    70%   25, 40, 45
+coalib/coala_ci.py                                                      7      3      0      0    57%   8-13
+coalib/coala_format.py                                                  7      3      0      0    57%   8-13
+coalib/coala_json.py                                                    7      3      0      0    57%   8-13
+coalib/misc/DeprecationUtilities.py                                     5      3      4      0    22%   26-28
+coalib/settings/Annotations.py                                         15      3      8      3    74%   27, 40, 47, 26->27, 38->47, 39->40
+coalib/bearlib/aspects/__init__.py                                     44      4     14      2    90%   76-77, 96, 99, 95->96, 98->99
+coalib/bears/GlobalBear.py                                             10      4      0      0    60%   29-30, 34, 49
+coalib/core/CircularDependencyError.py                                  6      4      2      0    25%   14-19
+coalib/core/DependencyBear.py                                          12      5      2      0    50%   21-23, 29, 38, 43
+coalib/core/FileBear.py                                                12      5      2      0    50%   19-21, 27, 36, 41
+coalib/core/ProjectBear.py                                             12      5      0      0    58%   20-22, 28, 37, 42
+coalib/results/result_actions/PrintAspectAction.py                     13      5      2      0    53%   15-17, 23-26
+coalib/results/result_actions/PrintDebugMessageAction.py               13      5      2      0    53%   15-17, 23-25
+coalib/results/result_actions/PrintMoreInfoAction.py                   13      5      2      0    53%   15-17, 23-25
+coalib/bearlib/abstractions/SectionCreatable.py                        13      6      0      0    54%   41, 52-54, 58, 69, 80
+coalib/bearlib/aspects/taste.py                                        27      6      6      1    67%   84-87, 95-99, 82->84
+coalib/parsing/filters/Filter.py                                       11      6      5      0    31%   6, 13-17
+coalib/results/SourcePosition.py                                       17      7      4      0    57%   26-28, 32, 35-38
+coalib/results/result_actions/ResultAction.py                          18      7      0      0    61%   38, 44, 69-70, 83-88
+coalib/bearlib/languages/documentation/DocBaseClass.py                 16      8      0      0    50%   46-47, 63-77, 86
+coalib/processes/DebugProcessing.py                                    22      8      2      0    58%   25, 38, 45, 60-63, 74-77
+coalib/bearlib/aspects/meta.py                                         52      9     12      0    83%   80, 96-98, 106-112
+coalib/misc/DictUtilities.py                                           12      9     10      0    14%   19-28, 32
+coalib/output/Interactions.py                                          11      9      6      0    12%   17-30
+coalib/output/printers/ListLogPrinter.py                               17      9      4      0    38%   17-20, 23-29, 32
+coalib/processes/LogPrinterThread.py                                   18     11      4      0    32%   16-18, 21-29
+coalib/processes/communication/LogMessage.py                           25     11      6      2    58%   14, 19, 25-26, 29, 34, 43-50, 13->14, 18->19
+coalib/settings/DocstringMetadata.py                                   40     11     12      4    71%   45-50, 53-56, 65, 67, 77, 44->45, 52->53, 64->65, 66->67
+coalib/bearlib/aspects/decorators.py                                   22     12     12      0    29%   29-44
+coalib/bearlib/aspects/exceptions.py                                   20     12      4      0    33%   8-11, 20-24, 33-34, 43-47
+coalib/output/Logging.py                                               27     12      0      0    56%   21, 25, 32, 39-44, 86-113, 122-127
+coalib/parsing/FilterHelper.py                                         18     13      8      0    19%   6, 10-18, 36-39
+coalib/results/AbsolutePosition.py                                     20     13      6      0    27%   19-24, 28, 57-63
+coalib/core/Graphs.py                                                  16     14     10      1    12%   40-59, 4->exit
+coalib/bearlib/languages/LanguageDefinition.py                         25     15     10      0    29%   76-85, 88-97, 100
+coalib/coala_delete_orig.py                                            24     16      6      0    27%   12-40
+coalib/collecting/Dependencies.py                                      19     16     10      0    10%   5-23, 35
+coalib/results/TextPosition.py                                         25     16     12      0    30%   21-25, 29, 33, 48-57, 72-81
+coalib/output/JSONEncoder.py                                           28     17     16      0    25%   15-16, 19-36
+coalib/results/result_actions/ApplyPatchAction.py                      28     18     12      0    25%   27-59
+coalib/results/result_actions/ShowAppliedPatchesAction.py              27     18      6      0    27%   9-10, 27-54
+coalib/misc/Exceptions.py                                              27     20     10      0    19%   11-29, 33-38
+coalib/misc/Shell.py                                                   30     20      8      0    26%   40, 46, 96-123, 145-147
+coalib/results/LineDiff.py                                             36     23     14      0    30%   26-30, 33, 39, 43-50, 54, 58-64, 68, 72-77
+coalib/results/TextRange.py                                            38     23     10      0    35%   30-34, 56-62, 73-81, 85, 89, 92, 108-114, 120
+coalib/bearlib/__init__.py                                             49     24     20      4    48%   104-122, 131-132, 139-141, 184-193, 13->exit, 127->130, 130->131, 138->139
+coalib/bearlib/naming_conventions/__init__.py                          30     24     42      0     8%   22-28, 51-57, 82-95, 118-130, 156-178
+coalib/parsing/CliParsing.py                                           33     24     20      0    17%   44-78, 93-97, 115-130
+coalib/results/result_actions/GeneratePatchesAction.py                 44     24      6      0    40%   17, 29-34, 44, 55, 61, 77-98
+coalib/output/printers/LogPrinter.py                                   46     26      4      0    40%   16, 23, 30, 37, 44, 70-80, 91, 121-125, 132, 139, 146, 149-151, 155-157, 160-162
+coalib/bearlib/aspects/collections.py                                  42     29     28      0    21%   38-45, 56-63, 72-76, 85-99
+coalib/results/result_actions/OpenEditorAction.py                      48     29     19      1    30%   113-121, 138-152, 160-206, 209, 208->209
+coalib/misc/Caching.py                                                 46     31     20      0    23%   80-101, 107-109, 112, 120-125, 135, 144, 155-157, 167-172
+coalib/coala_modes.py                                                  37     33      8      0     9%   11-30, 34-51, 55-89, 93-98
+coalib/results/SourceRange.py                                          59     35     16      0    32%   29-32, 41-48, 57, 76-80, 84, 95-99, 115-117, 160-162, 165-168, 192-200, 203, 207
+coalib/settings/SectionFilling.py                                      44     35     20      0    14%   32-60, 90-119
+coalib/results/result_actions/IgnoreResultAction.py                    54     36     17      0    25%   31-41, 50-79, 94-117
+coalib/bearlib/languages/Language.py                                  155     38     58      8    73%   52-54, 106-107, 122, 137, 198, 201, 204, 207, 213, 379-391, 400, 403, 406, 409, 412, 418, 421, 424-425, 429, 437, 447, 466, 473, 476, 508, 51->52, 105->106, 136->137, 192->exit, 395->397, 465->466, 468->473, 475->476
+coalib/core/DependencyTracker.py                                       55     40     27      0    18%   50, 72-75, 97, 118-128, 146-159, 173, 187, 203, 224-227, 254-282, 299, 323
+coalib/settings/FunctionMetadata.py                                    91     41     36      4    46%   41, 43, 58, 66, 76, 86, 95, 121-132, 136-144, 164-166, 181, 225, 276-299, 40->41, 42->43, 163->164, 180->181
+coalib/collecting/Importers.py                                         59     43     28      0    18%   12-31, 35-41, 45-48, 69-78, 88-95, 115-126, 155-159, 179
+coalib/bearlib/aspects/base.py                                         62     44     26      0    20%   53-75, 86-98, 108-109, 121-122, 152-164, 167, 175, 183-186
+coalib/bearlib/spacing/SpacingHelper.py                                59     46     24      0    16%   14-18, 28-40, 53-57, 66-75, 89-120
+coalib/core/Bear.py                                                    98     51     21      0    39%   140, 149, 160, 169, 178, 195-208, 234, 243, 263-271, 280-298, 334-345, 354, 389-402, 410-413, 420, 438, 447, 459
+coalib/results/result_actions/ShowPatchAction.py                       72     55     28      0    17%   14, 21, 25, 29-52, 66-83, 101-130
+coalib/parsing/DefaultArgParser.py                                     67     56      2      0    16%   16-23, 50-282
+coalib/coala.py                                                        66     57     30      0     9%   29-120
+coalib/parsing/ConfParser.py                                           73     57     28      0    16%   21-33, 48-59, 62-71, 75, 78-80, 87-145, 160-162
+coalib/bearlib/abstractions/ExternalBearWrap.py                        77     63     26      0    14%   23-34, 38-199, 205-208
+coalib/bearlib/languages/documentation/DocstyleDefinition.py           88     63     27      0    23%   72-93, 103, 113, 152, 161, 172, 184, 193, 203, 236-300, 311-319
+coalib/misc/CachingUtilities.py                                        76     63     20      0    14%   20-27, 39-58, 85-94, 110-116, 126, 141-153, 165-179, 189-193
+coalib/parsing/LineParser.py                                           79     67     26      0    11%   42-51, 63-69, 82-136, 158-183, 187-192, 211-221
+coalib/results/Result.py                                               93     68     43      1    20%   105-129, 134-136, 140, 143, 146, 206-212, 234-258, 269-270, 278-287, 296-304, 315-322, 326-331, 12->exit
+coalib/coala_main.py                                                  101     77     44      0    17%   27, 35, 47-48, 101-216
+coalib/output/ConfWriter.py                                            95     78     35      0    13%   22-41, 46, 49-52, 55-80, 83-85, 89-116, 131-156, 161-166, 169, 175
+coalib/bears/Bear.py                                                  137     79     37      1    34%   196, 204, 211, 219, 227, 246-264, 267, 270-271, 274, 277-290, 293-321, 334, 343, 353-366, 377, 395-404, 446-447, 458, 487-500, 508-511, 518, 445->446
+coalib/testing/LocalBearTestHelper.py                                 107     81     34      0    20%   18-68, 78-100, 135-145, 173-191, 219-251, 278-292, 333-337, 340-342, 351-353
+coalib/misc/BuildManPage.py                                           106     83     24      0    18%   47-48, 51-62, 65-85, 99-107, 110-129, 133, 137-141, 145, 149, 152, 157, 160-172, 175-179, 182-195, 198-208, 211-219
+coalib/results/ResultFilter.py                                         94     84     54      0     7%   23-58, 75, 95-110, 121-160, 174-215, 226-248
+coalib/core/Core.py                                                   101     86     46      1    11%   46-62, 86-149, 179-190, 197-205, 214-250, 266-286, 300-337, 359, 10->exit
+coalib/bearlib/languages/documentation/DocumentationComment.py        114     90     40      0    17%   43-48, 55, 59, 63, 67, 81-94, 116-201, 242-261, 273-287, 312-313
+coalib/processes/BearRunning.py                                       125    103     44      0    13%   29-30, 55-76, 99-125, 146-161, 189-204, 235-249, 284-311, 325-342, 364-375, 385-386, 419-432, 463-480, 543-561
+coalib/collecting/Collectors.py                                       132    104     84      0    13%   16-19, 24-35, 49-58, 72-90, 101-107, 122-149, 173-185, 198-205, 220-238, 254-269, 276-282, 289, 305-314, 328-330, 341-350
+coalib/settings/Section.py                                            137    106     66      0    16%   34-43, 59-72, 122, 127-136, 139-148, 158-161, 164-172, 182-192, 209-212, 215-221, 224-229, 232-246, 249-251, 264-267, 273-278, 293-304, 316-325, 332, 372-383
+coalib/bearlib/languages/documentation/DocumentationExtraction.py     130    118     74      0     6%   35-58, 84-104, 128-156, 173-180, 190, 195-220, 242-339
+coalib/bearlib/abstractions/Linter.py                                 212    120     92     15    37%   44, 48-60, 63, 83, 91, 101-124, 129, 132-133, 136-144, 147, 153, 165, 192, 202, 212-226, 230, 236, 242-253, 257-262, 287-333, 363-364, 400, 439, 506-507, 513-514, 523, 529-535, 539-545, 579-583, 604-612, 627-674, 678, 706, 730, 43->44, 46->48, 61->132, 62->63, 82->83, 90->91, 100->101, 128->129, 135->136, 146->147, 152->153, 511->513, 522->523, 528->529, 538->539
+coalib/settings/ConfigurationGathering.py                             162    132     65      0    13%   34-39, 50-66, 75-83, 98-105, 124-142, 151-162, 174-185, 200-209, 232-306, 318-334, 390-397, 412-417, 432-439, 485-498
+coalib/parsing/Globbing.py                                            174    148    106      0     9%   20-31, 64-78, 94-106, 119-125, 138-151, 161-194, 217-224, 231, 243-252, 263-273, 284-299, 310-312, 325-329, 342-343, 347-374, 386-395, 406
+coalib/results/Diff.py                                                218    172     90      0    16%   28-32, 46-72, 90-156, 167-180, 183-188, 194-204, 210, 217, 225, 232, 240, 247, 253-277, 288, 304-309, 316, 326, 366-383, 402-407, 416-436, 451, 461-466, 475-476, 486-495, 505, 539-552, 555-558, 585-590, 613, 636, 647, 662-665
+coalib/processes/Processing.py                                        258    213    120      0    12%   45, 55-56, 60, 70-73, 85-103, 124-172, 194-200, 236-256, 270-291, 304-309, 332-351, 383-458, 472-476, 486-527, 544, 590-678, 692-704, 754-825
+coalib/output/ConsoleInteraction.py                                   337    261    156      0    15%   67-70, 99-114, 118-119, 131, 142, 167-201, 217-255, 280-322, 338-340, 362-399, 405-407, 427-440, 466-473, 503-510, 528-537, 555-562, 592-602, 617-626, 642-687, 723-740, 779-825, 848-859, 876-922, 941-974, 1000-1002, 1018-1037
+---------------------------------------------------------------------------------------------------------------
+TOTAL                                                                6222   3804   2353     53    32%
+
+[31m[1mFAIL Required test coverage of 100% not reached. Total coverage: 32.10%
+[0m
+[1m============================= 884 tests deselected =============================[0m
+[32m[1m================== 18 passed, 884 deselected in 7.62 seconds ===================[0m
