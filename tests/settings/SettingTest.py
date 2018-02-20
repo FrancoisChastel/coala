@@ -17,6 +17,7 @@ from coalib.parsing.Globbing import glob_escape
 
 int_mock = mock.Mock(return_value = [1, 97, 3])
 str_mock = mock.Mock(return_value = ['a', 'b', 'c'])
+float_mock = mock.Mock(return_value = [1.987, 97.0, 3.0])
 
 class SettingTest(unittest.TestCase):
 
@@ -115,14 +116,14 @@ class SettingTest(unittest.TestCase):
             self.uut = Setting('key', '1, a, 3')
             int_list(self.uut)
 
-        with mock.patch('typed_list(int)', int_mock):
+        with mock.patch('coalib.settings.Setting.typed_list', int_mock):
             self.assertEqual(repr(int_list), 'typed_list(int)')
 
     def test_str_list(self):
         self.uut = Setting('key', 'a, b, c')
         self.assertEqual(str_list(self.uut), ['a', 'b', 'c'])
-        with mock.patch('typed_list(int)', str_mock):
-            self.assertEqual(repr(str_list), 'typed_list(str)')
+        #with mock.patch('typed_list(int)', str_mock):
+        self.assertEqual(repr(str_list), 'typed_list(str)')
 
     def test_float_list(self):
         self.uut = Setting('key', '0.8, 1.3, 5.87')
@@ -131,7 +132,7 @@ class SettingTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.uut = Setting('key', '1.987, a, 3')
             float_list(self.uut)
-
+        #with mock.patch('typed_list(float)', float_mock):
         self.assertEqual(repr(float_list), 'typed_list(float)')
 
     def test_bool_list(self):
