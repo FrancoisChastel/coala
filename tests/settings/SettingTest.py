@@ -16,6 +16,7 @@ from coalib.parsing.Globbing import glob_escape
 
 
 int_mock = mock.Mock(return_value = [1, 97, 3])
+str_mock = mock.Mock(return_value = ['a', 'b', 'c'])
 
 class SettingTest(unittest.TestCase):
 
@@ -120,7 +121,8 @@ class SettingTest(unittest.TestCase):
     def test_str_list(self):
         self.uut = Setting('key', 'a, b, c')
         self.assertEqual(str_list(self.uut), ['a', 'b', 'c'])
-        self.assertEqual(repr(str_list), 'typed_list(str)')
+        with mock.patch('typed_list(int)', str_mock):
+            self.assertEqual(repr(str_list), 'typed_list(str)')
 
     def test_float_list(self):
         self.uut = Setting('key', '0.8, 1.3, 5.87')
