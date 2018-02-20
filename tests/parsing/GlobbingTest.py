@@ -21,7 +21,7 @@ import unittest
 from coalib.parsing.Globbing import (
     _iter_alternatives, _iter_choices, _position_is_bracketed, fnmatch, glob,
     glob_escape)
-
+from unittest import mock
 
 class TestFiles:
     """
@@ -127,8 +127,10 @@ class GlobEscapeTest(unittest.TestCase):
             'test[)]',
             'test[(][)]',
             'test [(]1[)]']
-        for unescaped_str, escaped_str in zip(input_strings, output_strings):
-            self.assertEqual(glob_escape(unescaped_str), escaped_str)
+        special = mock.Mock(return_value = '()[]|>*')
+        with mock.patch('GLOBBING_SPECIAL_CHARS', special):
+            for unescaped_str, escaped_str in zip(input_strings, output_strings):
+                self.assertEqual(glob_escape(unescaped_str), escaped_str)
 
 
 class FnmatchTest(unittest.TestCase):
