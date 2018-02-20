@@ -1,5 +1,7 @@
 import os
 import unittest
+from unittest import mock
+from unittest.mock import MagicMock
 from collections import OrderedDict
 
 from coalib.bearlib.languages import Language
@@ -12,6 +14,11 @@ from coalib.settings.Setting import (
 from coalib.parsing.DefaultArgParser import PathArg
 from coalib.parsing.Globbing import glob_escape
 
+
+int_mock = mock.Mock(return_value = [1, 97, 3])
+str_mock = mock.Mock(return_value = ['a', 'b', 'c'])
+float_mock = mock.Mock(return_value = [1.987, 97.0, 3.0])
+bool_mock = mock.Mock(return_value = [True, False, True, True])
 
 class SettingTest(unittest.TestCase):
 
@@ -101,6 +108,7 @@ class SettingTest(unittest.TestCase):
 
         self.assertEqual(repr(typed_list(int)), 'typed_list(int)')
 
+  
     def test_int_list(self):
         self.uut = Setting('key', '1, 2, 3')
         self.assertEqual(int_list(self.uut), [1, 2, 3])
@@ -109,12 +117,14 @@ class SettingTest(unittest.TestCase):
             self.uut = Setting('key', '1, a, 3')
             int_list(self.uut)
 
-        self.assertEqual(repr(int_list), 'typed_list(int)')
+        with mock.patch('coalib.settings.Setting.typed_list', int_mock):
+            self.assertEqual(repr(int_list), 'typed_list(int)')
 
     def test_str_list(self):
         self.uut = Setting('key', 'a, b, c')
         self.assertEqual(str_list(self.uut), ['a', 'b', 'c'])
-        self.assertEqual(repr(str_list), 'typed_list(str)')
+        with mock.patch('coalib.settings.Setting.typed_list', str_mock):
+            self.assertEqual(repr(str_list), 'typed_list(str)')
 
     def test_float_list(self):
         self.uut = Setting('key', '0.8, 1.3, 5.87')
@@ -123,8 +133,8 @@ class SettingTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.uut = Setting('key', '1.987, a, 3')
             float_list(self.uut)
-
-        self.assertEqual(repr(float_list), 'typed_list(float)')
+        with mock.patch('coalib.settings.Setting.typed_list', float_mock):
+            self.assertEqual(repr(float_list), 'typed_list(float)')
 
     def test_bool_list(self):
         self.uut = Setting('key', 'true, nope, yeah')
@@ -134,7 +144,8 @@ class SettingTest(unittest.TestCase):
             self.uut = Setting('key', 'true, false, 78, 89.0')
             bool_list(self.uut)
 
-        self.assertEqual(repr(bool_list), 'typed_list(bool)')
+        with mock.patch('coalib.settings.Setting.typed_list', bool_mock):
+            self.assertEqual(repr(bool_list), 'typed_list(bool)')
 
     def test_typed_dict(self):
         self.uut = Setting('key', '1, 2: t, 3')
