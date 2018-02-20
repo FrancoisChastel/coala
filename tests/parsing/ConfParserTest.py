@@ -6,7 +6,7 @@ import logging
 
 from coalib.parsing.ConfParser import ConfParser
 from coalib.settings.Section import Section
-
+from unittest import mock
 
 class ConfParserTest(unittest.TestCase):
     example_file = """setting = without_section
@@ -56,16 +56,27 @@ class ConfParserTest(unittest.TestCase):
 
         logger = logging.getLogger()
 
+        isnotdir = mock.Mock(return_value = False)
         with self.assertLogs(logger, 'WARNING') as self.cm:
-            self.sections = self.uut.parse(self.file)
+            with mock.patch('os.path.isdir', isnotdir):
+                self.sections = self.uut.parse(self.file)
 
     def tearDown(self):
         os.remove(self.file)
 
     def test_parse_nonexisting_file(self):
-        self.assertRaises(FileNotFoundError,
+        isdir = mock.Mock(return_value = True)
+        isnotdir = mock.Mock(return_value = False)
+        with mock.patch('os.path.isdir', isdir):
+            self.assertRaises(FileNotFoundError,
                           self.uut.parse,
                           self.nonexistentfile)
+
+        with mock.patch('os.path.isdir', isnotdir):
+            self.assertRaises(FileNotFoundError,
+                          self.uut.parse,
+                          self.nonexistentfile)
+
         self.assertNotEqual(self.uut.parse(self.file, True), self.sections)
 
     def test_parse_nonexisting_section(self):
@@ -161,7 +172,9 @@ class ConfParserTest(unittest.TestCase):
     def test_remove_empty_iter_elements(self):
         # Test with empty-elem stripping.
         uut = ConfParser(remove_empty_iter_elements=True)
-        uut.parse(self.file)
+        isnotdir = mock.Mock(return_value = False)
+        with mock.patch('os.path.isdir', isnotdir):
+            uut.parse(self.file)
         self.assertEqual(list(uut.get_section('EMPTY_ELEM_STRIP')['A']),
                          ['a', 'b', 'c'])
         self.assertEqual(list(uut.get_section('EMPTY_ELEM_STRIP')['B']),
@@ -171,7 +184,8 @@ class ConfParserTest(unittest.TestCase):
 
         # Test without stripping.
         uut = ConfParser(remove_empty_iter_elements=False)
-        uut.parse(self.file)
+        with mock.patch('os.path.isdir', isnotdir):
+            uut.parse(self.file)
         self.assertEqual(list(uut.get_section('EMPTY_ELEM_STRIP')['A']),
                          ['a', 'b', 'c'])
         self.assertEqual(list(uut.get_section('EMPTY_ELEM_STRIP')['B']),
