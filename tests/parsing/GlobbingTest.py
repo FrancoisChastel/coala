@@ -127,10 +127,8 @@ class GlobEscapeTest(unittest.TestCase):
             'test[)]',
             'test[(][)]',
             'test [(]1[)]']
-        special = mock.Mock(return_value = '()[]|>*')
-        with mock.patch('GLOBBING_SPECIAL_CHARS', special):
-            for unescaped_str, escaped_str in zip(input_strings, output_strings):
-                self.assertEqual(glob_escape(unescaped_str), escaped_str)
+        for unescaped_str, escaped_str in zip(input_strings, output_strings):
+            self.assertEqual(glob_escape(unescaped_str), escaped_str)
 
 
 class FnmatchTest(unittest.TestCase):
